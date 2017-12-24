@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <button v-on:click="reverseMessage">反转字符串</button>
+    </div>
+    <div id="app1">
+      {{ message | capitalize }}
+    </div>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Runoob!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+
+new Vue({
+  el: '#app1',
+  data: {
+    message: 'runoob'
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    
+    <script src="js/vue.min.js"></script>
+    <style>
+    .class1{
+      background: #444;
+      color: #eee;
+    }
+</style>
+</head>
+<body>
+
+<p id="app">{{ message }}</p>
+<div id="app1">
+    <div v-html="message"></div>
+</div>
+
+<div id="app2">
+  <label for="r1">eg3:修改颜色</label><input type="checkbox" v-model="class1" id="r1">
+  <br><br>
+  <div v-bind:class="{'class1': class1}">
+    directiva v-bind:class
+  </div>
+</div>
+<div id="app3">
+    {{5+5}}<br>
+    {{ ok ? 'YES' : 'NO' }}<br>
+    {{ message.split('').reverse().join('') }}
+    <div v-bind:id="'list-' + id">菜鸟教程</div>
+</div>
+<div id="app4">
+    <p v-if="seen">现在你看到我了</p>
+    <template v-if="ok">
+      <h1>菜鸟教程</h1>
+      <p>学的不仅是技术，更是梦想！</p>
+      <p>哈哈哈，打字辛苦啊！！！</p>
+    </template>
+</div>
+<div id="app5">
+    <pre><a v-bind:href="url">菜鸟教程</a></pre>
+</div>
+
+    
+<script>
+
+new Vue({
+    el: '#app',
+    data:{
+        message: 'Hello Vue.js!!'
+    }
+});
+
+new Vue({
+  el: '#app1',
+  data: {
+    message: '<h1>eg2:菜鸟教程</h1>'
+  }
+});
+
+new Vue({
+    el: '#app2',
+  data:{
+      class1: false
+  }
+});
+
+new Vue({
+  el: '#app3',
+  data: {
+    ok: true,
+    message: 'RUNOOB',
+    id : 1
+  }
+})
+
+new Vue({
+  el: '#app4',
+  data: {
+    seen: false,
+    ok: true
+  }
+})
+
+new Vue({
+  el: '#app5',
+  data: {
+    url: 'http://www.runoob.com'
+  }
+})
+</script>
+
+</body>
+</html>
